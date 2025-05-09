@@ -28,9 +28,21 @@ function UserManager() {
       email: inputs.email,
       id: Math.random(),
     };
-    setUsers([...users, newUser]);
-    setInputs({ name: "", phone: "", email: "" });
+    if (inputs.name === "" || inputs.email === "" || inputs.phone === "") {
+      alert("Enter your information first ");
+      console.log(inputs);
+    } else {
+      setUsers([...users, newUser]);
+      setInputs({ name: "", phone: "", email: "" });
+    }
   };
+
+  // document.addEventListener("keydown", (event) => {
+  //   if (event.key === "Enter") {
+  //     buttonStatus === "update" ? addUser() : updateUser();
+  //   }
+  // });
+
   const updateUser = () => {
     const updatedUsers = users.map((user) =>
       user.id === editUserId
@@ -45,6 +57,7 @@ function UserManager() {
     setUsers(updatedUsers);
     setButtonStatus("add");
     setEditUserId(null);
+    setInputs({ name: "", phone: "", email: "" });
   };
 
   const editUser = (user) => {
@@ -58,10 +71,11 @@ function UserManager() {
     const filteredUsers = users.filter((user) => user.id !== target);
     setUsers(filteredUsers);
   };
+
   return (
     <div className="flex items-center pt-20 flex-col gap-5  bg-gray-100  h-screen">
       <p className=" font-bold text-2xl">User Management</p>
-      <div className=" w-[400px] border rounded-lg p-5 flex flex-col gap-5 bg-white shadow-md">
+      <div className=" w-[400px] border rounded-lg p-5 flex flex-col gap-5 bg-white shadow-md ">
         <div>
           <p>Name</p>
           <input
@@ -113,12 +127,6 @@ function UserManager() {
             Update User
           </button>
         )}
-        {/* <button
-          className="border w-[35%] bg-blue-600 text-white py-2 rounded-md"
-          onClick={addUser}
-        >
-          Add User
-        </button> */}
       </div>
       <div className="flex flex-col gap-5 w-[400px]">
         {users.map((user) => {
