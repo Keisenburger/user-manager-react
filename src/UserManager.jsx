@@ -58,6 +58,7 @@ function UserManager() {
     setButtonStatus("add");
     setEditUserId(null);
     setInputs({ name: "", phone: "", email: "" });
+    // setInputs({ name: "", phone: "", email: "" });
   };
 
   const editUser = (user) => {
