@@ -5,7 +5,7 @@ import { useState } from "react";
 function UserManager() {
   const [users, setUsers] = useState([
     {
-      name: "bat",
+      name: "Bold",
       phone: "99119911",
       email: "bat@gmail.com",
       id: Math.random(),
