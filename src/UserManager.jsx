@@ -21,6 +21,9 @@ function UserManager() {
 
   // functions
 
+  onkeydown = (event) => {
+    if (event.key === "Enter") addUser();
+  };
   const addUser = () => {
     const newUser = {
       name: inputs.name,
